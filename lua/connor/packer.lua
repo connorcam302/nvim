@@ -14,6 +14,12 @@ return require('packer').startup(function(use)
     }
 
     use { 'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
+    use {
+        "loctvl842/monokai-pro.nvim",
+        config = function()
+            require("monokai-pro").setup()
+        end
+    }
 
     use {
         'nvim-treesitter/nvim-treesitter',

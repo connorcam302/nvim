@@ -6,7 +6,6 @@ npairs.add_rule(Rule("$$", "$$", "tex"))
 -- you can use some built-in conditions
 
 local cond = require('nvim-autopairs.conds')
-print(vim.inspect(cond))
 
 npairs.add_rules({
         Rule("$", "$", { "tex", "latex" })
@@ -86,7 +85,7 @@ npairs.setup({
     ts_config = {
         lua = { 'string' }, -- it will not add a pair on that treesitter node
         javascript = { 'template_string' },
-        java = false,     -- don't check treesitter on java
+        java = false,       -- don't check treesitter on java
     }
 })
 
