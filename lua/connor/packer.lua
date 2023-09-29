@@ -13,13 +13,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use { 'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
-    use {
-        "loctvl842/monokai-pro.nvim",
-        config = function()
-            require("monokai-pro").setup()
-        end
-    }
+    use "CodeGradox/onehalf-lush"
 
     use {
         'nvim-treesitter/nvim-treesitter',
