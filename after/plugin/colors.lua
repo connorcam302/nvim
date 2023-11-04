@@ -1,6 +1,6 @@
 function SetColour(color)
-	color = color or "monokai-pro"
-	vim.cmd.colorscheme(color)
+    vim.api.nvim_set_option("background", "dark")
+    vim.cmd("colorscheme onehalf-lush-dark")
 end
-	vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none" })
+
 SetColour()
