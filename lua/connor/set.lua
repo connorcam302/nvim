@@ -10,7 +10,6 @@ vim.opt.smartindent = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = "C:/Users/theco/.vim"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

@@ -27,3 +27,7 @@ end)
 vim.keymap.set("n", "<leader>f", function()
     vim.cmd("Prettier")
 end)
+
+vim.api.nvim_exec([[
+  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.svelte Prettier
+]], false)

@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use { 'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
     use {
         "loctvl842/monokai-pro.nvim",
         config = function()
@@ -25,7 +24,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
-
+    use { 'prettier/vim-prettier', run = 'npm install' }
 
     use("nvim-treesitter/playground")
     use("theprimeagen/harpoon")
