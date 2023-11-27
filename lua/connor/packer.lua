@@ -13,11 +13,12 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use "CodeGradox/onehalf-lush"
+    use { "catppuccin/nvim", as = "catppuccin" }
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+
     use { 'prettier/vim-prettier', run = 'npm install' }
 
     use("nvim-treesitter/playground")
@@ -25,6 +26,23 @@ return require('packer').startup(function(use)
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
     use('ThePrimeagen/vim-be-good')
+    use('github/copilot.vim')
+    use { 'mrshmllow/document-color.nvim', config = function()
+  require("document-color").setup {
+    -- Default options
+    mode = "background", -- "background" | "foreground" | "single"
+  }
+  end
+}
+    use({
+  "roobert/tailwindcss-colorizer-cmp.nvim",
+  -- optionally, override the default options:
+  config = function()
+    require("tailwindcss-colorizer-cmp").setup({
+      color_square_width = 2,
+    })
+  end
+})
 
     use {
         'VonHeikemen/lsp-zero.nvim',

@@ -57,6 +57,10 @@ end
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     lsp_format_on_save(bufnr)
+      if client.server_capabilities.colorProvider then
+    -- Attach document colour support
+    require("document-color").buf_attach(bufnr)
+  end
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -69,6 +73,19 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- You are now capable!
+capabilities.textDocument.colorProvider = {
+  dynamicRegistration = true
+}
+
+-- Lsp servers that support documentColor
+require("lspconfig").tailwindcss.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 lsp.setup()
 
