@@ -27,3 +27,9 @@ vim.opt.colorcolumn = "150"
 
 vim.g.mapleader = " "
 
+vim.filetype.add({
+  extension = {
+    svelte = "svelte",
+    ts = "typescript",
+  },
+})
