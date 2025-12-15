@@ -10,3 +10,14 @@ opt.expandtab = true
 
 opt.smartindent = true
 
+opt.swapfile = false
+opt.backup = false
+
+opt.scrolloff=8
+opt.signcolumn = "yes"
+
+opt.isfname:append("@-@")
+
+opt.updatetime=50
+
+opt.termguicolors = true
