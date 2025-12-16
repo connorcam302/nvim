@@ -32,4 +32,4 @@ opt.clipboard = "unnamedplus"
 opt.breakindent = true
 
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
