@@ -33,3 +33,12 @@ opt.breakindent = true
 
 opt.list = true
 opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+
+opt.wildignore:append({
+	"**/node_modules/**",
+	"**/dist/**",
+	"**/build/**",
+	"**/.git/**",
+	"**/.svelte-kit/**",
+	"**/.next/**",
+})
