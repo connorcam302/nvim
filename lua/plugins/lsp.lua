@@ -1,6 +1,9 @@
+local vscode = require("config.vscode")
+
 return {
 	{
 		"neovim/nvim-lspconfig",
+		enabled = not vscode.is_disabled("nvim-lspconfig"),
 		dependencies = {
 			{ "williamboman/mason.nvim", opts = { PATH = "append" } },
 			"williamboman/mason-lspconfig.nvim",
@@ -9,10 +12,59 @@ return {
 			"saghen/blink.cmp",
 			"ibhagwan/fzf-lua", -- make sure fzf-lua is installed
 		},
+		opts = {
+			servers = {
+				tailwindcss = {
+					-- exclude a filetype from the default_config
+					filetypes_exclude = { "markdown" },
+					-- add additional filetypes to the default_config
+					filetypes_include = {},
+					-- to fully override the default_config, change the below
+					-- filetypes = {}
+
+					-- additional settings for the server, e.g:
+					-- tailwindCSS = { includeLanguages = { someLang = "html" } }
+					-- can be addeded to the settings table and will be merged with
+					-- this defaults for Phoenix projects
+					settings = {
+						tailwindCSS = {
+							includeLanguages = {
+								elixir = "html-eex",
+								eelixir = "html-eex",
+								heex = "html-eex",
+							},
+						},
+					},
+				},
+			},
+			setup = {
+				tailwindcss = function(_, opts)
+					opts.filetypes = opts.filetypes or {}
+
+					-- Add default filetypes
+					vim.list_extend(opts.filetypes, vim.lsp.config.tailwindcss.filetypes)
+
+					-- Remove excluded filetypes
+					--- @param ft string
+					opts.filetypes = vim.tbl_filter(function(ft)
+						return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
+					end, opts.filetypes)
+
+					-- Add additional filetypes
+					vim.list_extend(opts.filetypes, opts.filetypes_include or {})
+				end,
+			},
+		},
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			-- Setup Mason
-			require("mason").setup({ PATH = "append" })
+			require("mason").setup({
+				PATH = "append",
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry",
+				},
+			})
 			require("mason-lspconfig").setup({
 				ensure_installed = { "ts_ls" },
 				automatic_installation = true,

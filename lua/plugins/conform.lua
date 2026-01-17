@@ -1,5 +1,8 @@
+local vscode = require("config.vscode")
+
 return {
 	"stevearc/conform.nvim",
+	enabled = not vscode.is_disabled("conform.nvim"),
 	opts = {},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()

@@ -2,6 +2,7 @@ require("config.keymaps")
 require("config.opts")
 require("config.scripts")
 require("config.diagnostics")
+require("config.neovide")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,5 +37,9 @@ require("lazy").setup({
 	-- colorscheme that will be used when installing plugins.
 	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
-	checker = { enabled = true },
+	checker = { enabled = false },
+	ui = {
+		-- Disable the plugin update list
+		check_for_updates_on_start = false,
+	},
 })

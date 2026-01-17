@@ -1,3 +1,5 @@
+local vscode = require("config.vscode")
+
 return {
 	"numToStr/Comment.nvim",
 	opts = {
@@ -11,4 +13,5 @@ return {
 			block = "gbc",
 		},
 	},
+	enabled = not vscode.is_disabled("Comment.nvim"),
 }

@@ -1,5 +1,8 @@
+local vscode = require("config.vscode")
+
 return {
 	"ThePrimeagen/harpoon",
+	enabled = not vscode.is_disabled("harpoon"),
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()

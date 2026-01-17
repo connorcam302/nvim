@@ -12,3 +12,11 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 	end,
 })
 
+vim.api.nvim_create_user_command("UnityRegen", function()
+	local regen_file = "Assets/.unity_regen.cs"
+	vim.fn.system({ "touch", regen_file })
+
+	vim.cmd("LspRestart")
+
+	vim.notify("Unity: forced .slnx regeneration + Roslyn restarted", vim.log.levels.INFO)
+end, {})

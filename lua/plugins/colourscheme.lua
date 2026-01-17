@@ -1,6 +1,9 @@
+local vscode = require("config.vscode")
+
 return {
 	{
 		"rebelot/kanagawa.nvim",
+		enabled = not vscode.is_disabled("kanagawa.nvim"),
 		lazy = false, -- load immediately; set true if you want lazy-loading
 		config = function()
 			require("kanagawa").setup({

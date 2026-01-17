@@ -1,7 +1,10 @@
+local vscode = require("config.vscode")
+
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {},
+	enabled = not vscode.is_disabled("fzf-lua"),
 	keys = {
 		{ "<leader>pf", "<cmd>lua require('fzf-lua').files()<CR>", desc = "Find files" },
 		{ "<leader>ps", "<cmd>lua require('fzf-lua').live_grep()<CR>", desc = "Find line" },
